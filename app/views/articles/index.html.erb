@@ -1,13 +1,26 @@
-<p><%= link_to "New article", new_article_path(@article) %></p>
 
-<% @articles.each do |article| %>
-  <h3><%= article.title %></h3>
-  <p><%= article.content %></p>
-  <%= link_to "Detail", article_path(article) %>
-  <%= link_to "Edit", edit_article_path(article) %>
-  <%= link_to "Delete", article_path(article),
-      method: :delete,
-      data: { confirm: "Are you sure?" }  %>
-<% end %>
+<h1>Articles</h1>
+<%= link_to "Add an Article", new_article_path(@article) %></p>
+
+
+
+
+
+<div id="articles" class="row">
+  <% @articles.each do |article| %>
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="article">
+        <h3><%= article.title %></h3>
+        <p><%= article.content %></p>
+
+        <div class="detail">
+          <%= link_to "More detail", article_path(article) %>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
+</div>
+
 
 

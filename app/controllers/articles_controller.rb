@@ -6,6 +6,8 @@ class ArticlesController < ApplicationController
   end
 
   def show          # GET /articles/:id
+    @title = Kramdown::Document.new(@article.title).to_html.html_safe
+    @text = Kramdown::Document.new(@article.content).to_html.html_safe
   end
 
   def new           # GET /articles/new
@@ -31,7 +33,7 @@ class ArticlesController < ApplicationController
   def destroy       # DELETE /articles/:id
     @article.destroy
 
-    redirect_to article_path
+    redirect_to articles_path
   end
 
   private
